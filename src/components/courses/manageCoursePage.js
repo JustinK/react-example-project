@@ -20,7 +20,17 @@ var ManageCoursePage = React.createClass({
 	},
 	getInitialState: function() {
 		return {
-			course: { id: '', firstName: '', lastName: ''},
+			course: {
+				id: '',
+				title: '',
+				watchHref: '',
+				author: {  
+					id: '',
+					name: ''
+				},
+				length: '',
+				category: ''
+			},
 			errors: {},
 			dirty: false
 		};
@@ -42,14 +52,14 @@ var ManageCoursePage = React.createClass({
 	courseFormIsValid: function() {
 		var formIsValid = true;
 		this.state.errors = {}; //clear previous errors
-		if(this.state.course.firstName.length < 3){
-			this.state.errors.firstName = 'First name must be at least 3 characters';
+		if(this.state.course.title.length < 3){
+			this.state.errors.title = 'Title must be at least 3 characters';
 			formIsValid = false;
 		}
-		if(this.state.course.lastName.length < 3){
-			this.state.errors.lastName = 'Last name must be at least 3 characters';
-			formIsValid = false;
-		}
+		// if(this.state.course.title.length < 3){
+		// 	this.state.errors.title = 'Last name must be at least 3 characters';
+		// 	formIsValid = false;
+		// }
 		this.setState({errors: this.state.errors});
 		return formIsValid;
 	},
